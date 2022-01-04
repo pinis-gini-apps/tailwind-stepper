@@ -11,14 +11,13 @@ interface IStepProps{
 const StepMainArea:FC<IStepProps> = (props)=>{
     const [state, setState] = useState("")
     const {stepNumber, step, heading,subHeading,inputInstances} = props
-    // console.log(stepNumber, step, heading,subHeading, inputInstances)
     const steeper = useContext(StepperContext)
     const handleChange = (e:any)=>{
      setState(e.target.value)
      steeper.handleChange(e.target)
     }
     return (
-        <div className={`mt-20 p-4 border-2 md:max-w-lg mx-auto ${stepNumber===step? 'block':'hidden'}`}>
+        <div className={`mt-16 shadow-lg p-4 md:max-w-lg mx-auto ${stepNumber===step? 'block':'hidden'}`}>
             <div>
                 <h2 className="font-bold text-center subpixel-antialiasing">{heading}</h2>
                 <h4 className=" text-center subpixel-antialiasing">{subHeading}</h4>

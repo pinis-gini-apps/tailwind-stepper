@@ -2,9 +2,8 @@ import {useState, useEffect, useContext} from 'react'
 import {StepperContext} from '../store/stepper-api'
 import axios from "axios";
 import StepMainArea from './StepMainArea';
-import StepperStep from './StepperStep/StepperStep'
+import StepperProgress from './StepperProgress/StepperProgress'
 import {signUpConfig} from '../structure_demo'
-import './Stepper.css';
 
 
 
@@ -48,12 +47,13 @@ const Stepper = ()=>{
         setSections(arr)
     },[])
     return (
-        <div className="p-5 text-center md:max-w-2xl mx-auto">
+        <div className="h-screen w-screen flex justify-center items-center	">
+        <div className="p-5 shadow-2xl text-center md:w-6/12 md:h-auto">
             <h2>Sign Up Stepper</h2>
             <div className="mx-4 p-4">
                 <div className="flex items-center">
                     {signUpConfig.steps.map((item,index)=>
-                        <StepperStep
+                        <StepperProgress
                             key={index}
                             step={stepNumber}
                             icon={item.icon}
@@ -101,6 +101,7 @@ const Stepper = ()=>{
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 
