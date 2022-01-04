@@ -7,19 +7,16 @@ export type StepperContextState = {
 const contextDefaultValues: StepperContextState = {
     handleChange: () => {},
     stepperData:{}
-
 };
-
 export const StepperContext = createContext<StepperContextState>(
     contextDefaultValues
 );
-
 const StepperProvider: FC = ({ children }) => {
     const [stepperData, setStepperData] = useState<{}>({});
-
-    const handleChange = (value: any) => {
-        setStepperData({...stepperData, [value.name]:value.value})
+     const handleChange = (value: any) => {
+        setStepperData({...stepperData, ...value})
     }
+    console.log(stepperData)
      return (
         <StepperContext.Provider
             value={{

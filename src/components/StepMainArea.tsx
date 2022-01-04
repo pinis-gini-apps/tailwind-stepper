@@ -1,4 +1,7 @@
-import React, {FC,useContext, useState} from "react";
+import React, {FC, Fragment,useContext, useState} from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
 import {StepperContext} from '../store/stepper-api'
 
 interface IStepProps{
@@ -8,35 +11,69 @@ interface IStepProps{
     subHeading:string
     inputInstances:any
 }
-const StepMainArea:FC<IStepProps> = (props)=>{
-    const [state, setState] = useState("")
-    const {stepNumber, step, heading,subHeading,inputInstances} = props
+// const StepMainArea:FC<IStepProps> = (props)=>{
+const StepMainArea = (props:any)=>{
+    const {stepNumber, step,preStep,nexStep,submitForm, heading,subHeading,inputInstances} = props
     const steeper = useContext(StepperContext)
-    const handleChange = (e:any)=>{
-     setState(e.target.value)
-     steeper.handleChange(e.target)
+     const stepOneValidationSchema = Yup.object({
+        [inputInstances[0].name]: Yup.string().required().label(`${inputInstances[0].name}`),
+    });
+
+    const data = {
+        [inputInstances[0].name]: ""
     }
+    const handleSubmit = (values:any) => {
+        steeper.handleChange(values)
+        nexStep()
+    };
     return (
-        <div className={`mt-16 shadow-lg p-4 md:max-w-lg mx-auto ${stepNumber===step? 'block':'hidden'}`}>
-            <div>
-                <h2 className="font-bold text-center subpixel-antialiasing">{heading}</h2>
-                <h4 className=" text-center subpixel-antialiasing">{subHeading}</h4>
-                <div className="flex align-middle md:flex-row">
-                    <div className="w-full flex-1 mx-2 svelte-1l8159u">
-                        <div className="bg-white my-4 p-1 rounded svelte-1l8159u">
-                            <label className="block w-full text-left mb-2 ml-1">{inputInstances[0].label}</label>
-                            <input
-                                className={`border-2 w-full inline-block ${inputInstances[0].className}`}
-                                onChange={handleChange}
-                                placeholder={inputInstances[0].placeholder}
-                                name={inputInstances[0].name}
-                                type={inputInstances[0].type}
-                                value={state}
-                            /> </div>
+        <Formik
+            validationSchema={stepOneValidationSchema}
+            initialValues={data}
+            onSubmit={handleSubmit}
+        >
+            {() => (
+                <Form>
+                    <div className={`w-11/12 md:w-9/12  mt-10 mx-auto ${stepNumber=== step? 'block':'hidden'}`}>
+                        <div className="mb-6  text-center ">
+                            <h2 className="font-bold text-yellow-600 subpixel-antialiasing">{heading}</h2>
+                            <h4 className="italic subpixel-antialiasing mt-3 text-gray-500">{subHeading}</h4>
+                        </div>
+                                    <div className="mx-auto">
+                                        <label className="mx-auto block text-center my-auto w-2/5 ">{inputInstances[0].label}</label>
+                                        <div className=" mx-auto h-12  flex-1 w-10/12">
+                                            <Field
+                                                className="border-2 w-full block w-3/5 py-2"
+                                                placeholder={inputInstances[0].name}
+                                                name={inputInstances[0].name}
+                                                type={inputInstances[0].type}
+                                            />
+                                            <div className="text-red-700 text-xs sm:text-base text-left	">
+                                                <ErrorMessage
+                                                    name={inputInstances[0].name}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={`my-8 flex ${stepNumber===0? 'justify-end':'justify-between'}`}>
+                                        { stepNumber===0 ? null :    <button
+                                            onClick={()=>preStep()}
+                                            className="btn"
+                                        >
+                                            Previous
+                                        </button> }
+                                        {  stepNumber===4 ?
+                                            <button  onClick={()=>submitForm()} className="btn btn-submit">
+                                                Submit
+                                            </button>:
+                                        <button className="btn" type="submit">Next</button>
+                                        }
+                                    </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </Form>
+            )}
+
+        </Formik>
     )
 }
 
