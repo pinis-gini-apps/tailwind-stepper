@@ -47,7 +47,7 @@ const Stepper = ()=>{
         setSections(arr)
     },[])
     return (
-        <div className="h-screen w-screen flex justify-center items-center	">
+        <div className="h-screen w-screen flex justify-center items-center bg-green-50">
         <div className="p-2 shadow-2xl text-center md:w-9/12 mx-6">
             <p className="mt-3 mb-5 font-bold text-3xl text-green-400">Sign Up Stepper</p>
             <div className="mx-4 p-4">

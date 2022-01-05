@@ -45,11 +45,11 @@ const StepMainArea:FC<IStepProps> = (props)=>{
                         </div>
                                 <div className="mx-auto">
                                     <label className="mx-auto block text-center my-auto w-2/5 ">
-                                        {inputInstances[0].label}
+                                        {/*{inputInstances[0].label}*/}
                                     </label>
                                     <div className=" mx-auto h-12  flex-1 w-10/12">
                                         <Field
-                                            className="border-2 w-full block w-3/5 py-2 pl-3"
+                                            className="border-2 rounded-xl w-full block w-3/5 py-2 pl-3 outline-none"
                                             placeholder={inputInstances[0].name}
                                             name={inputInstances[0].name}
                                             type={inputInstances[0].type}
