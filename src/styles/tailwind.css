@@ -23,11 +23,11 @@
     font-bold
     cursor-pointer
     border duration-200 ease-in-out
-    hover:bg-red-50
+    hover:bg-green-200
 }
 .btn-submit{
-    @apply bg-blue-400
-    hover:bg-blue-50
+    @apply bg-green-400
+    hover:bg-green-200
 }
 
 .stepper-icon{

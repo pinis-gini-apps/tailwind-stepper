@@ -1,19 +1,13 @@
 import {FC,Fragment} from 'react'
 import {stepConvert} from  '../../util/stepConvert'
+import {IStepperStepProps} from '../../interfaces/interfaces'
 
-interface  IStepperStepProps{
-    icon:string
-    name:string
-    class?:string
-    step:number
-    handleStep: (num:number)=>void
-}
 const StepperProgress:FC<IStepperStepProps>= (props)=>{
 const {icon, name, step,handleStep} = props
     let stepNumber = stepConvert(name)
     return(
 <Fragment>
-    <div onClick={()=> handleStep(stepNumber)} className={`flex items-center relative ${stepNumber===step? "text-red-600":""}`}>
+    <div onClick={()=> handleStep(stepNumber)} className={`flex items-center relative ${stepNumber===step? "text-green-500":""}`}>
         <div className="stepper-icon">
             <i className={icon}></i>
         </div>

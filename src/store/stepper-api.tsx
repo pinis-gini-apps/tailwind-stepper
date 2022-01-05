@@ -16,7 +16,6 @@ const StepperProvider: FC = ({ children }) => {
      const handleChange = (value: any) => {
         setStepperData({...stepperData, ...value})
     }
-    console.log(stepperData)
      return (
         <StepperContext.Provider
             value={{

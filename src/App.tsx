@@ -1,9 +1,20 @@
+import { Switch, Route, Redirect } from 'react-router-dom'
 import  StepperProvider from './store/stepper-api'
-import Stepper from "./components/Stepper"
+import HomePage from "./pages/HomePage";
+import RegistrationPage from './pages/RegistrationPage'
+
 const App = () => {
   return (
       <StepperProvider>
-        <Stepper/>
+          <Switch>
+              <Route path='/' exact>
+                  <RegistrationPage/>
+              </Route>
+              <Route path='/home' exact>
+                  <HomePage />
+              </Route>
+              <Redirect to="/" />
+          </Switch>
       </StepperProvider>
   );
 }
