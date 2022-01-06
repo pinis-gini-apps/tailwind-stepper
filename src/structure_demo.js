@@ -8,12 +8,12 @@ export const signUpConfig = {
         },
         {
             stepName: "stepB",
-            icon: "fas fa-address-card",
+            icon: "fas fa-briefcase",
             className: ""
         },
         {
             stepName: "stepC",
-            icon: "far fa-envelope",
+            icon: "fas fa-map-marker-alt",
             className: ""
         },
         {
@@ -23,7 +23,7 @@ export const signUpConfig = {
         },
         {
             stepName: "stepE",
-            icon: "fas fa-info",
+            icon: "far fa-envelope",
             className: ""
         },
     ],
@@ -31,10 +31,10 @@ export const signUpConfig = {
             stepA: {
                 mainArea: {
                     heading: {
-                        title:"Heading Title"
+                        title:"Personal Information Section"
                     },
                     subHeading: {
-                        title:"subheading title"
+                        title:"Personal Information Subtitle"
                     },
                     inputInstances: [
                         {
@@ -45,7 +45,6 @@ export const signUpConfig = {
                             validationType: "string",
                             id:"firstName",
                             validations: [
-
                                 {
                                     type: "required",
                                     params: ["this field is required"]
@@ -59,12 +58,30 @@ export const signUpConfig = {
                                     params: [10, "first cannot be more than 10 characters"]
                                 },
                             ],
-                            // validation: {
-                            //     type: "required",
-                            //   minChars: 2,
-                            //   maxChars: 20,
-                            //   allowLanguages: ["en", "he"],
-                            // },
+                            type: "text-input",
+                            offsprings: []
+                        },
+                        {
+                            label: "Last Name",
+                            name:"lastName",
+                            placeholder: "Your Last Name",
+                            className: "mx-auto p-4 text-blue-500",
+                            validationType: "string",
+                            id:"lastName",
+                            validations: [
+                                {
+                                    type: "required",
+                                    params: ["this field is required"]
+                                },
+                                {
+                                    type: "min",
+                                    params: [3, "last name cannot be less than 5 characters"]
+                                },
+                                {
+                                    type: "max",
+                                    params: [10, "last cannot be more than 10 characters"]
+                                },
+                            ],
                             type: "text-input",
                             offsprings: []
                         }
@@ -76,45 +93,62 @@ export const signUpConfig = {
             stepB: {
                 mainArea: {
                     heading: {
-                        title:"Heading Title"
+                        title:"Jon Description Section"
                     },
                     subHeading: {
                         title:"subheading title"
                     },
                     inputInstances: [
                         {
-                            label: "Last Name",
-                            name:"lastName",
+                            label: "Job Description Section",
+                            name:"jobDescription",
                             placeholder: "Type Your Last Name",
                             className: "mx-auto p-4 text-blue-500",
                             validationType: "string",
-                            id:"lastName",
+                            id:"jobDescription",
                             validations: [
-
                                 {
                                     type: "required",
                                     params: ["this field is required"]
                                 },
                                 {
                                     type: "min",
-                                    params: [3, "last name cannot be less than 3 characters"]
+                                    params: [3, "last name- cannot be less than 3 characters"]
                                 },
                                 {
                                     type: "max",
-                                    params: [10, "last cannot be more than 10 characters"]
+                                    params: [10, "last name- cannot be more than 10 characters"]
                                 }
                             ],
-                            validation: {
-                                minChars: 2,
-                                maxChars: 20,
-                                allowLanguages: ["en", "he"],
-                            },
                             type: "text-input",
                             offsprings: []
-                        }
+                        },
+                        {
+                            label: "Job Title",
+                            name:"position",
+                            placeholder: "Type Your Position",
+                            className: "mx-auto p-4 text-blue-500",
+                            validationType: "string",
+                            id:"position",
+                            validations: [
+                                {
+                                    type: "required",
+                                    params: ["this field is required"]
+                                },
+                                {
+                                    type: "min",
+                                    params: [3, "job position cannot be less than 3 characters"]
+                                },
+                                {
+                                    type: "max",
+                                    params: [10, "job position cannot be more than 10 characters"]
+                                }
+                            ],
+                            type: "text-input",
+                            offsprings: []
+                        },
                     ],
                     buttons: {
-
                     }
                 }
 
@@ -122,10 +156,10 @@ export const signUpConfig = {
             stepC: {
                 mainArea: {
                     heading: {
-                        title:"Heading Title"
+                        title:"Address Section Section"
                     },
                     subHeading: {
-                        title:"subheading title"
+                        title:"subheading address"
                     },
                     inputInstances: [
                         {
@@ -136,7 +170,6 @@ export const signUpConfig = {
                             validationType: "string",
                             id:"address",
                             validations: [
-
                                 {
                                     type: "required",
                                     params: ["this field is required"]
@@ -192,14 +225,13 @@ export const signUpConfig = {
                         }
                     ],
                     buttons: {
-
                     }
                 }
             },
             stepE: {
                 mainArea: {
                     heading: {
-                        title:"Heading Title"
+                        title:"Email Section"
                     },
                     subHeading: {
                         title:"subheading title"
@@ -213,7 +245,6 @@ export const signUpConfig = {
                             validationType: "string",
                             id:"email",
                             validations: [
-
                                 {
                                     type: "required",
                                     params: ["this field is required"]

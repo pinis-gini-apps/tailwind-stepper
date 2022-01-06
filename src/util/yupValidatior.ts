@@ -1,13 +1,19 @@
 import * as yup from "yup";
 
+interface IYupSchema{
+    id:number
+    validationType:any
+    validations:[]
+}
+
 export function createYupSchema(schema:any,config:any) {
-    const { id, validationType, validations = [] } = config;
-    // @ts-ignore
-    if (!yup[validationType]) {
+    const Yup:any = yup
+
+    const { id, validationType, validations = [] }:IYupSchema = config;
+    if (!Yup[validationType]) {
         return schema;
     }
-    // @ts-ignore
-    let validator = yup[validationType]();
+    let validator = Yup[validationType]();
     validations.forEach((validation: { params: any; type: any; }) => {
         const { params, type } = validation;
         if (!validator[type]) {

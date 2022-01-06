@@ -1,12 +1,12 @@
 import {useState, useEffect, useContext} from 'react'
 import {useHistory} from "react-router-dom";
-import {StepperContext} from '../store/stepper-api'
+import {StepperContext} from '../../store/stepper-api'
 import axios from "axios";
-import StepMainArea from './StepMainArea';
-import StepperProgress from './StepperProgress/StepperProgress'
-import {signUpConfig} from '../structure_demo'
-import {url} from '../config/config'
-import {ISection} from '../interfaces/interfaces'
+import StepMainArea from '../StepperMainArea/StepMainArea';
+import StepperProgress from '../StepperProgress/StepperProgress'
+import {signUpConfig} from '../../structure_demo'
+import {url} from '../../config/config'
+import {ISection} from '../../interfaces/interfaces'
 
 const Stepper = ()=>{
     let history = useHistory()
