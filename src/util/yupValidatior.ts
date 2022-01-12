@@ -2,14 +2,13 @@ import * as yup from "yup";
 
 interface IYupSchema{
     id:number
-    validationType:any
+    validationType: string
     validations:[]
 }
 
-export function createYupSchema(schema:any,config:any) {
-    const Yup:any = yup
-
-    const { id, validationType, validations = [] }:IYupSchema = config;
+export function createYupSchema<Y extends IYupSchema>(schema:any,config:Y) {
+    const Yup = yup as any
+    const { id, validationType, validations = [] } = config;
     if (!Yup[validationType]) {
         return schema;
     }
